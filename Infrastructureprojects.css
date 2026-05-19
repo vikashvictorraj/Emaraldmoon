@@ -1,0 +1,245 @@
+:root {
+  --primary-green: #003d24;
+  --accent-green: #0d7a44;
+  --bg-grey: #f4f7f5;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Base viewport layout wrapper constraint setup */
+.infra-container {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: var(--bg-grey);
+  padding: clamp(0.5rem, 2vh, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Fully locks viewport window against external scrolling */
+}
+
+/* --- HEADER SECTION --- */
+.infra-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-shrink: 0; /* Prevents structural collapse under pressure */
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+}
+
+.header-info { 
+  flex: 1.5; 
+  min-width: 0; 
+}
+
+.label-top { 
+  color: var(--primary-green); 
+  font-weight: 800; 
+  font-size: clamp(0.7rem, 1.2vh, 0.85rem); 
+  margin-bottom: 0.2rem; 
+}
+
+.hero-heading { 
+  font-size: clamp(1.2rem, 3.2vh, 2rem); 
+  line-height: 1.15; 
+  color: #333; 
+  font-weight: 800;
+}
+.hero-heading.accent { color: var(--accent-green); }
+
+.hero-para { 
+  font-size: clamp(0.7rem, 1.4vh, 0.8rem); 
+  color: #666; 
+  margin-top: 0.4rem; 
+  max-width: 500px; 
+  line-height: 1.4;
+}
+
+.header-visual {
+  flex: 0.8;
+  height: clamp(90px, 13vh, 130px);
+  background: #ddd;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #888;
+  font-weight: bold;
+}
+
+/* --- TABS --- */
+.infra-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Enforces crisp row alignment across screens */
+  gap: 0.4rem;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  flex-shrink: 0;
+}
+
+.nav-btn {
+  background: white;
+  padding: clamp(0.5rem, 1.2vh, 0.75rem);
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.65rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.nav-btn.active { background: var(--primary-green); color: white; border-color: var(--primary-green); }
+
+/* --- INTERNAL GRID SCROLL PANE ENGINE --- */
+.projects-grid-wrapper {
+  flex: 1;
+  min-height: 0; /* Crucial anchor permitting inner overflow box tracking */
+  overflow-y: auto; /* Contains card scrolling within designated zone safely */
+  padding-right: 0.25rem;
+}
+
+/* Custom minimal modern scrollbar styling */
+.projects-grid-wrapper::-webkit-scrollbar { width: 5px; }
+.projects-grid-wrapper::-webkit-scrollbar-track { background: transparent; }
+.projects-grid-wrapper::-webkit-scrollbar-thumb { background: rgba(0, 61, 36, 0.15); border-radius: 10px; }
+.projects-grid-wrapper::-webkit-scrollbar-thumb:hover { background: var(--accent-green); }
+
+.projects-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr; /* Mobile first structure */
+}
+
+/* --- INFRA CARD STYLING --- */
+.infra-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column; /* Default stack format for clean micro presentation scaling */
+  gap: 0.65rem;
+}
+
+.card-content { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.35rem;
+  flex: 1.2; 
+}
+
+.card-head { display: flex; gap: 0.4rem; align-items: flex-start; }
+.card-id { background: var(--primary-green); color: white; padding: 2px 6px; border-radius: 3px; font-weight: bold; font-size: 0.65rem; flex-shrink: 0; }
+.card-head h3 { font-size: clamp(0.75rem, 1.6vh, 0.85rem); color: var(--primary-green); font-weight: 700; line-height: 1.2; }
+
+.card-loc { font-size: 0.62rem; color: #666; font-weight: 500; }
+.card-scope { font-size: 0.62rem; color: #2d3748; line-height: 1.3; }
+.card-scope strong, .card-client strong { color: #1a202c; font-weight: 600; }
+.scope-list { list-style: none; margin-top: 0.15rem; display: flex; flex-direction: column; gap: 0.1rem; }
+.scope-list li { color: #555; }
+
+.card-client { font-size: 0.62rem; color: #2d3748; margin: 0.15rem 0; }
+.card-status { font-size: 0.62rem; font-weight: 600; color: #1a202c; display: flex; align-items: center; gap: 0.3rem; }
+.completed-tag { background: var(--accent-green); color: white; padding: 1px 6px; border-radius: 3px; font-size: 0.55rem; font-weight: bold; }
+
+/* Media Elements inside Card blocks */
+.card-media { flex: 1; display: flex; flex-direction: column; gap: 0.4rem; justify-content: flex-end; }
+.slider-box {
+  height: clamp(80px, 11vh, 110px);
+  background: #eee;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.b-label, .a-label { position: absolute; top: 6px; font-size: 0.5rem; color: white; padding: 2px 5px; font-weight: bold; letter-spacing: 0.5px; }
+.b-label { left: 6px; background: rgba(0,0,0,0.6); }
+.a-label { right: 6px; background: var(--accent-green); }
+
+.divider-handle { width: 2px; height: 100%; background: white; position: relative; display: flex; align-items: center; justify-content: center; }
+.divider-handle::after { 
+  content: "↔"; 
+  background: white; 
+  width: 16px; 
+  height: 16px; 
+  border-radius: 50%; 
+  font-size: 0.55rem; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.card-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; flex-shrink: 0; }
+.mini { height: clamp(24px, 4vh, 32px); background: #eee; border-radius: 2px; font-size: 0.45rem; color: #999; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+/* --- FOOTER SECTION --- */
+.infra-footer {
+  margin-top: clamp(0.5rem, 1.5vh, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.highlights-flex { display: flex; flex-wrap: wrap; gap: 0.4rem; flex: 1; justify-content: space-between; width: 100%; }
+.h-box { display: flex; align-items: center; gap: 0.4rem; min-width: 90px; }
+.h-circle { width: 24px; height: 24px; border: 1px solid var(--accent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+.h-box span { font-size: 0.58rem; color: var(--primary-green); font-weight: 700; }
+
+.cta-banner {
+  background: var(--primary-green);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.cta-text h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; }
+.cta-text p { font-size: 0.58rem; opacity: 0.85; }
+.cta-btn { background: white; color: var(--primary-green); border: none; padding: 0.4rem 0.8rem; border-radius: 4px; font-weight: bold; font-size: 0.6rem; cursor: pointer; white-space: nowrap; transition: background 0.2s ease; }
+.cta-btn:hover { background: var(--bg-grey); }
+
+/* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+
+/* Mobile Screens (<600px) */
+@media (max-width: 599px) {
+  .header-visual { display: none !important; } /* Removes non-essential visual headers on mobile displays */
+  .infra-header { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+  .scope-list { display: none; } /* Removes nested bullet strings to optimize mobile screen density */
+  .highlights-flex { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; justify-items: start; }
+  .cta-banner { flex-direction: column; text-align: center; gap: 0.5rem; padding: 0.6rem; }
+}
+
+/* Tablet Screens (600px - 1024px) */
+@media (min-width: 600px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Desktop Monitors (1024px - 1200px) */
+@media (min-width: 1025px) {
+  .projects-grid { grid-template-columns: repeat(3, 1fr); }
+  .infra-footer { flex-direction: row; justify-content: space-between; align-items: center; gap: 1.5rem; }
+  .highlights-flex { width: auto; gap: 0.75rem; }
+  .cta-banner { width: auto; }
+}
+
+/* Large High-Res Monitors Layer Override (>=1200px) */
+@media (min-width: 1200px) {
+  .infra-card { flex-direction: row; align-items: stretch; }
+  .card-media { min-width: 200px; }
+}

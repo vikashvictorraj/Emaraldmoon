@@ -1,0 +1,173 @@
+/* --- MAIN FOOTER WRAPPER --- */
+.em-footer {
+  background-color: rgba(2, 22, 14, 0.98); /* Matches your dark header */
+  border-top: 3px solid #bf9a42; /* Gold accent line */
+  color: #ffffff;
+  padding: 3rem 0 0 0;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  padding-bottom: 3rem;
+}
+
+/* --- BRAND COLUMN --- */
+.brand-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-logo-group { 
+  display: flex; 
+  align-items: center; 
+  gap: 0.75rem; 
+}
+
+.footer-about {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  line-height: 1.6;
+  max-width: 400px;
+  margin-top: 0.5rem;
+}
+
+/* Logo CSS Drawing (Reused from Header to match perfectly) */
+.logo-icon { position: relative; width: 35px; height: 35px; display: flex; align-items: flex-end; justify-content: center; gap: 2px; }
+.moon-crest { position: absolute; width: 100%; height: 100%; border-radius: 50%; box-shadow: -4px 4px 0 0 #bf9a42; transform: rotate(-20deg); left: -2px; top: -2px; }
+.building-bars { display: flex; align-items: flex-end; gap: 2px; z-index: 2; margin-bottom: 4px; }
+.building-bars span { display: block; width: 4px; background-color: #007a44; }
+.building-bars span:nth-child(1) { height: 12px; }
+.building-bars span:nth-child(2) { height: 18px; background-color: #0d7a44; }
+.building-bars span:nth-child(3) { height: 14px; }
+.logo-text { display: flex; flex-direction: column; }
+.brand-name { color: #bf9a42; font-size: 1.2rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1.1; }
+.brand-sub { color: #ffffff; font-size: 0.6rem; font-weight: 600; letter-spacing: 1.5px; }
+
+/* --- LINKS & CONTACT COLUMNS --- */
+.footer-heading {
+  color: #bf9a42;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Small gold underline under headings */
+.footer-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 30px;
+  height: 2px;
+  background-color: #bf9a42;
+}
+
+.footer-links, .footer-contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footer-links a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #bf9a42;
+  padding-left: 5px; /* Nice little slide effect on hover */
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: #e2e8f0;
+  line-height: 1.4;
+}
+
+.contact-icon {
+  font-size: 0.9rem;
+}
+
+/* --- BOTTOM BAR --- */
+.footer-bottom {
+  background-color: #00120a;
+  padding: 1.2rem clamp(1rem, 4vw, 3rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 50%;
+  color: #bf9a42;
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.social-icon:hover {
+  background-color: #bf9a42;
+  color: #00120a;
+}
+
+/* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .brand-column {
+    grid-column: span 2; /* Make the brand info take up the top row on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .brand-column {
+    grid-column: span 1;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,334 @@
+/* ==========================================
+   1. Core Layout & Container
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
+
+.banner-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Background Video and Overlay */
+.banner-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 30%, rgba(0, 0, 0, 0.3) 70%);
+  z-index: -1;
+}
+
+/* Content Wrapper */
+.banner-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   2. Hero Typography & Buttons (Responsive Fluid Text)
+   ========================================== */
+.banner-heero-tro {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 80px 10% 60px 10%;
+}
+
+.hext-container {
+  max-width: 850px;
+  width: 100%;
+}
+
+/* Fluid typography adjusts sizes smoothly between 320px and 1920px screen widths */
+#hero-headline {
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 20px 0;
+  color: #ffffff;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 600;
+  color: #e0e0e0;
+  margin: 0 0 35px 0;
+  line-height: 1.4;
+}
+
+/* Buttons Container */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.quote-btn, .profile-btn {
+  padding: 15px 35px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.quote-btn {
+  background-color: #F1B31C;
+  color: #000000;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quote-btn::after {
+  content: '>';
+  font-weight: 800;
+}
+
+.quote-btn:hover {
+  background-color: #d49c12;
+}
+
+.profile-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.profile-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* ==========================================
+   3. Approved Partners Strip (Responsive Overlap)
+   ========================================== */
+.banner-partners {
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  width: 84%;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #022314 0%, #053b21 100%);
+  border-radius: 12px 12px 0 0;
+  padding: 25px 40px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+  box-sizing: border-box;
+  transform: translateY(35px); /* Creates the overlay break-point shift */
+  z-index: 5;
+}
+
+.partners-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #F1B31C;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  margin: 0;
+  padding-right: 20px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.partners-logo-strip {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.partner-logo {
+  max-height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+/* ==========================================
+   4. Extra Lower Sections (Services & Counter Sections)
+   ========================================== */
+
+/* White Services Grid Section */
+.services-grid-container {
+  background-color: #ffffff;
+  padding: 100px 8% 60px 8%; /* High top padding accounts for partner badge overlap */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  color: #333333;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0b1c14;
+  margin: 12px 0 8px 0;
+  text-transform: uppercase;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Bottom Green Stats Counter Strip */
+.stats-counter-strip {
+  background-color: #032b18;
+  padding: 35px 8%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stat-number {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: #F1B31C;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+
+/* ==========================================
+   5. Media Breakpoints for Total Responsiveness
+   ========================================== */
+
+/* --- TABLETS & MEDIUM SCREENS (Under 1024px) --- */
+@media (max-width: 1024px) {
+  .banner-heero-tro {
+    padding: 100px 6% 60px 6%;
+  }
+
+  .banner-partners {
+    width: 90%;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .partners-title {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-right: 0;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+
+  .partners-logo-strip {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 30px;
+  }
+
+  .services-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 80px; /* Slight adjustment */
+  }
+
+  .stats-counter-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 20px;
+  }
+}
+
+/* --- SMALL TABLETS & LARGE PHONES (Under 768px) --- */
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .quote-btn, .profile-btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .partner-logo {
+    max-height: 30px; /* Scales down logo sizes so they don't wrap too aggressively */
+  }
+}
+
+/* --- MOBILE DEVICES (Under 480px) --- */
+@media (max-width: 480px) {
+  .banner-heero-tro {
+    padding: 80px 20px 40px 20px;
+  }
+
+  .banner-partners {
+    width: 92%;
+    transform: translateY(25px);
+  }
+
+  .partners-logo-strip {
+    gap: 15px 20px;
+  }
+
+  .services-grid-container {
+    grid-template-columns: 1fr; /* Stacks cards into 1 column */
+    padding-top: 70px;
+    gap: 35px;
+  }
+
+  .stats-counter-strip {
+    grid-template-columns: 1fr; /* Stacks counters into 1 column */
+    gap: 25px;
+    padding-left: 25px;
+  }
+}

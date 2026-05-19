@@ -1,0 +1,248 @@
+:root {
+  --deep-green: #003d24;
+  --accent-green: #0d7a44;
+  --white: #ffffff;
+  --bg-soft: #f4f7f5;
+  --text-dark: #333;
+  --status-blue-bg: #e3ecf8;
+  --status-blue-text: #2c5282;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Base canvas forced strictly inside the viewport bounds */
+.road-projects-wrapper {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: var(--bg-soft);
+  padding: clamp(0.5rem, 2vh, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Suppresses external browser level scroll bars */
+}
+
+/* --- HEADER --- */
+.road-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-shrink: 0; /* Prevents container collapse */
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+}
+
+.header-content { 
+  flex: 1.2; 
+  min-width: 0; 
+}
+
+.label-row { 
+  font-weight: 800; 
+  font-size: clamp(0.7rem, 1.2vh, 0.85rem); 
+  color: var(--deep-green); 
+  margin-bottom: 0.25rem; 
+  letter-spacing: 0.5px;
+}
+.slashes { color: var(--accent-green); }
+
+.road-main-title {
+  font-size: clamp(1.2rem, 3.2vh, 2rem);
+  line-height: 1.15;
+  color: var(--text-dark);
+  font-weight: 800;
+}
+.green-accent { color: var(--accent-green); }
+
+.road-subtitle {
+  font-size: clamp(0.7rem, 1.4vh, 0.8rem);
+  color: #666;
+  margin-top: 0.4rem;
+  max-width: 500px;
+  line-height: 1.4;
+}
+
+.road-hero-visual {
+  flex: 0.8;
+  height: clamp(90px, 13vh, 130px);
+  background: #ddd;
+  clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* --- TABS --- */
+.road-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2x2 grid framework for smaller phones */
+  gap: 0.4rem;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  flex-shrink: 0;
+}
+
+.tab {
+  background: white;
+  padding: clamp(0.4rem, 1vh, 0.75rem);
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.65rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.tab.active { background: var(--deep-green); color: white; border-color: var(--deep-green); }
+
+/* --- THE MAIN GRID (INTERNAL SCROLL ZONE) --- */
+.road-grid {
+  display: grid;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0; /* Critical layout anchor to permit nested child element scrolling */
+  overflow-y: auto; /* Contains card content within viewport cleanly */
+  padding-right: 0.25rem;
+  grid-template-columns: repeat(1, 1fr); /* Mobile First Default */
+}
+
+/* Subtle, modern custom scrollbar engine */
+.road-grid::-webkit-scrollbar { width: 5px; }
+.road-grid::-webkit-scrollbar-track { background: transparent; }
+.road-grid::-webkit-scrollbar-thumb { background: rgba(0, 61, 36, 0.15); border-radius: 10px; }
+.road-grid::-webkit-scrollbar-thumb:hover { background: var(--accent-green); }
+
+/* --- CARD STYLING --- */
+.road-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.card-visual {
+  height: clamp(90px, 12vh, 120px);
+  background: #eee;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.tag-before, .tag-after {
+  position: absolute;
+  top: 6px;
+  font-size: 0.5rem;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 2px;
+  color: white;
+  letter-spacing: 0.5px;
+}
+.tag-before { left: 6px; background: rgba(0,0,0,0.6); }
+.tag-after { right: 6px; background: var(--accent-green); }
+
+.slider-handle-line { width: 2px; height: 100%; background: white; position: relative; }
+.circle-handle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: white; width: 18px; height: 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 0.6rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.card-info h3 { 
+  font-size: clamp(0.75rem, 1.5vh, 0.85rem); 
+  color: var(--deep-green); 
+  line-height: 1.2; 
+  font-weight: 700;
+}
+
+.info-item, .status-row { 
+  display: flex; 
+  gap: 0.4rem; 
+  font-size: 0.62rem; 
+  align-items: flex-start; 
+  line-height: 1.3;
+}
+
+.info-text { min-width: 0; color: #2d3748; }
+.info-text strong, .status-row strong { color: #1a202c; font-weight: 600; }
+.scope-p { color: #555; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 0.1rem; }
+
+/* Status Tags */
+.status-tag {
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 0.55rem;
+  margin-left: 0.2rem;
+  display: inline-block;
+}
+.status-tag.completed { background: var(--accent-green); color: white; }
+.status-tag.in-progress { background: var(--status-blue-bg); color: var(--status-blue-text); }
+
+/* Thumbnails */
+.card-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.mini-img {
+  height: clamp(24px, 4vh, 32px);
+  background: #eee;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.45rem;
+  color: #999;
+  font-weight: bold;
+}
+
+/* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+
+/* Mobile Screen Shifts (<600px) */
+@media (max-width: 599px) {
+  .road-hero-visual { display: none !important; } /* Strips header weight on small mobile layouts */
+  .road-grid { grid-template-columns: repeat(1, 1fr); }
+  .scope-p { -webkit-line-clamp: 1; } /* Clamps scope text further to minimize scroll depth */
+}
+
+/* Tablet Screens (600px - 1024px) */
+@media (min-width: 600px) {
+  .road-tabs { grid-template-columns: repeat(4, 1fr); }
+  .road-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Small Desktop Screen Targets (1024px - 1440px) */
+@media (min-width: 1024px) {
+  .road-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Large High-Res Screen Enhancements (>1440px) */
+@media (min-width: 1440px) {
+  .road-grid { grid-template-columns: repeat(4, 1fr); }
+}

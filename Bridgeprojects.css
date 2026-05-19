@@ -1,0 +1,234 @@
+:root {
+  --primary: #003d24;
+  --accent: #0d7a44;
+  --bg: #f4f7f5;
+  --white: #ffffff;
+  --text-grey: #666;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Master canvas setup locking component viewport dimensions */
+.bridge-container {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: var(--bg);
+  padding: clamp(0.5rem, 2vh, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Eliminates browser standard layout scroll tracking */
+}
+
+/* --- HEADER --- */
+.bridge-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-shrink: 0; /* Standardizes block geometry */
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+}
+
+.header-info { 
+  flex: 1.5; 
+  min-width: 0; 
+}
+
+.label-top { 
+  color: var(--primary); 
+  font-weight: 800; 
+  font-size: clamp(0.7rem, 1.2vh, 0.85rem); 
+  margin-bottom: 0.2rem; 
+}
+
+.main-title { 
+  font-size: clamp(1.2rem, 3.2vh, 2rem); 
+  line-height: 1.15; 
+  color: #333; 
+  font-weight: 800;
+}
+.main-title.accent { color: var(--accent); }
+
+.sub-text { 
+  font-size: clamp(0.7rem, 1.4vh, 0.8rem); 
+  color: var(--text-grey); 
+  margin-top: 0.4rem; 
+  max-width: 550px; 
+  line-height: 1.4;
+}
+
+.header-hero {
+  flex: 0.8;
+  height: clamp(90px, 13vh, 130px);
+  background: #ddd;
+  clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #888;
+  font-weight: bold;
+}
+
+/* --- TABS --- */
+.tab-navigation {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2x2 responsive configuration on tiny mobile layouts */
+  gap: 0.4rem;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  flex-shrink: 0;
+}
+
+.tab-item {
+  background: white;
+  padding: clamp(0.5rem, 1.2vh, 0.75rem);
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.65rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.tab-item.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* --- GRID SYSTEM WITH INDEPENDENT INTERNAL SCROLL --- */
+.bridge-grid {
+  display: grid;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0; /* Vital layout fix forcing containment of nested flex structures */
+  overflow-y: auto; /* Houses card arrays safely inside scrolling frame */
+  padding-right: 0.25rem;
+  grid-template-columns: 1fr; /* Mobile view configuration */
+}
+
+/* Custom minimal scrollbar engine */
+.bridge-grid::-webkit-scrollbar { width: 5px; }
+.bridge-grid::-webkit-scrollbar-track { background: transparent; }
+.bridge-grid::-webkit-scrollbar-thumb { background: rgba(0, 61, 36, 0.15); border-radius: 10px; }
+.bridge-grid::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* --- CARD STRUCTURES --- */
+.bridge-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.6rem;
+  height: 100%;
+}
+
+.card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card-title-row { display: flex; gap: 0.4rem; align-items: flex-start; }
+.proj-id { background: var(--primary); color: white; padding: 2px 6px; font-weight: bold; border-radius: 3px; font-size: 0.65rem; flex-shrink: 0; }
+.card-title-row h3 { font-size: clamp(0.75rem, 1.6vh, 0.85rem); color: var(--primary); line-height: 1.2; font-weight: 700; }
+
+.card-loc { font-size: 0.62rem; color: var(--text-grey); font-weight: 500; }
+
+.card-scope, .card-client, .card-status { font-size: 0.62rem; color: #2d3748; line-height: 1.3; }
+.card-scope strong, .card-client strong { color: #1a202c; font-weight: 600; }
+.card-scope ul { list-style: none; margin-top: 0.15rem; display: flex; flex-direction: column; gap: 0.1rem; }
+.card-scope li { color: #555; }
+.card-client p { color: #555; }
+
+.card-status { font-weight: 600; color: #1a202c; display: flex; align-items: center; gap: 0.3rem; margin-top: 0.1rem; }
+.status-tag { background: var(--accent); color: white; padding: 1px 6px; border-radius: 3px; font-weight: bold; font-size: 0.55rem; }
+
+/* Visual Components Inside Projects Cards */
+.card-visuals { display: flex; flex-direction: column; gap: 0.4rem; flex-shrink: 0; }
+.slider-mockup {
+  height: clamp(80px, 11vh, 110px);
+  background: #eee;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.label-before, .label-after { position: absolute; top: 6px; font-size: 0.5rem; color: white; padding: 2px 5px; border-radius: 2px; font-weight: bold; letter-spacing: 0.5px; }
+.label-before { left: 6px; background: rgba(0,0,0,0.6); }
+.label-after { right: 6px; background: var(--accent); }
+
+.slider-bar { width: 2px; height: 100%; background: white; position: relative; }
+.handle-dot {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: white; width: 16px; height: 16px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 0.55rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.card-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; flex-shrink: 0; }
+.t-img { height: clamp(24px, 4vh, 32px); background: #eee; border-radius: 2px; font-size: 0.45rem; color: #999; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+/* --- FOOTER COMPONENT --- */
+.bridge-footer {
+  margin-top: clamp(0.5rem, 1.5vh, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.highlights-flex { display: flex; flex-wrap: wrap; gap: 0.4rem; flex: 1; justify-content: space-between; }
+.h-box { display: flex; align-items: center; gap: 0.4rem; min-width: 140px; flex: 1; }
+.h-icon-circle { width: 24px; height: 24px; border: 1px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+.h-text h5 { font-size: 0.58rem; color: var(--primary); font-weight: 700; }
+.h-text p { font-size: 0.52rem; color: #718096; }
+
+.cta-banner {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cta-txt h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; }
+.cta-txt p { font-size: 0.58rem; opacity: 0.85; }
+.cta-btn { background: white; color: var(--primary); border: none; padding: 0.4rem 0.8rem; border-radius: 4px; font-weight: bold; cursor: pointer; white-space: nowrap; font-size: 0.6rem; transition: background 0.2s ease; }
+.cta-btn:hover { background: var(--bg); }
+
+/* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+
+/* Mobile Screen Reductions (<600px) */
+@media (max-width: 599px) {
+  .header-hero { display: none !important; } /* Removes heavy header graphic layouts on phone viewports */
+  .bridge-header { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+  .bridge-grid { grid-template-columns: repeat(1, 1fr); }
+  .card-scope ul { display: none; } /* Removes internal lists to drastically compress scroll depth */
+  .highlights-flex { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+  .cta-banner { flex-direction: column; text-align: center; gap: 0.5rem; padding: 0.6rem; }
+}
+
+/* Tablet Screens (600px - 1024px) */
+@media (min-width: 600px) {
+  .tab-navigation { grid-template-columns: repeat(4, 1fr); }
+  .bridge-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Desktop Monitors (>1024px) */
+@media (min-width: 1025px) {
+  .bridge-grid { grid-template-columns: repeat(3, 1fr); }
+  .bridge-footer { flex-direction: row; justify-content: space-between; align-items: center; gap: 1.5rem; }
+  .highlights-flex { gap: 0.75rem; }
+}

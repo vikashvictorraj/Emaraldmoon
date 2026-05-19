@@ -1,0 +1,41 @@
+.em-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 80px; /* Fixed height so other components can calculate space */
+  background-color: rgba(2, 22, 14, 0.98);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  flex-shrink: 0;
+  z-index: 9999; /* Massive z-index to guarantee it sits on top of everything */
+}
+
+/* Logo CSS Drawing Setup */
+.header-logo-group { display: flex; align-items: center; gap: 0.75rem; }
+.logo-icon { position: relative; width: 35px; height: 35px; display: flex; align-items: flex-end; justify-content: center; gap: 2px; }
+.moon-crest { position: absolute; width: 100%; height: 100%; border-radius: 50%; box-shadow: -4px 4px 0 0 #bf9a42; transform: rotate(-20deg); left: -2px; top: -2px; }
+.building-bars { display: flex; align-items: flex-end; gap: 2px; z-index: 2; margin-bottom: 4px; }
+.building-bars span { display: block; width: 4px; background-color: #007a44; }
+.building-bars span:nth-child(1) { height: 12px; }
+.building-bars span:nth-child(2) { height: 18px; background-color: #0d7a44; }
+.building-bars span:nth-child(3) { height: 14px; }
+
+.logo-text { display: flex; flex-direction: column; }
+.brand-name { color: #bf9a42; font-size: clamp(1rem, 1.5vw, 1.35rem); font-weight: 800; letter-spacing: 0.5px; line-height: 1.1; }
+.brand-sub { color: #ffffff; font-size: clamp(0.5rem, 0.8vw, 0.65rem); font-weight: 600; letter-spacing: 1.5px; }
+
+/* Nav Menu Styles */
+.header-nav { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); }
+.nav-link { color: #ffffff; text-decoration: none; font-size: clamp(0.7rem, 0.9vh, 0.8rem); font-weight: 700; letter-spacing: 0.5px; padding: 0.5rem 0; position: relative; transition: color 0.2s ease; }
+.nav-link:hover { color: #bf9a42; }
+
+/* Small Quote Button */
+.quote-btn-sm { background: linear-gradient(135deg, #c5a059, #bf9a42); color: #ffffff; border: none; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: transform 0.2s ease; }
+.quote-btn-sm:hover { transform: translateY(-1px); }
+
+@media (max-width: 1024px) {
+  .header-nav { display: none; }
+}
